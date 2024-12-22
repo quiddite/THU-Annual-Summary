@@ -92,7 +92,9 @@ pip install requests matplotlib pycryptodome pandas numpy platform
 
 ## 3.年度总结
 
-当获得 `{username}_{year}年校园卡交易总结记录.csv`表格与部分数据的可视化图像后，运行 `make_report.py`文件，输入对应的年份（4位纯数字如：2024），即可获得你的华清大学校园卡年度总结报告 `Annual_Summary_{year}.md`。
+当获得 `{username}_{year}年校园卡交易总结记录.csv`表格与部分数据的可视化图像后，**运行 `make_report.py`文件**，输入对应的年份（4位纯数字如：2024），
+
+即可获得你的华清大学校园卡年度总结报告 `Annual_Summary_{year}.md`。
 
 值得注意的是，2023年数据应该只有7月及以后的数据，因此2023年的总结实际为半年总结。
 
