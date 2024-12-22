@@ -101,3 +101,7 @@ pip install requests matplotlib pycryptodome pandas numpy platform
 值得注意的是，2023年数据应该只有7月及以后的数据，因此2023年的总结实际为半年总结。
 
 最后，可以自行将所获得的.md文件转化为pdf文件方便阅读。
+
+以下是以本人2024年年度报告为示例：
+
+![图片](Example_Annual_Summary_2024.png)

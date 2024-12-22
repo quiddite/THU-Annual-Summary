@@ -143,7 +143,7 @@ if __name__ == '__main__':
     df_breakfast_addr = df_breakfast_by_day['meraddr'].value_counts()
     max_breakfast_addr = df_breakfast_addr.idxmax()
     breakfast_addr_count = df_breakfast_addr.max()
-    breakfast_addr_monney = df_breakfast_by_day[df_breakfast_by_day['meraddr']==max_breakfast_addr]['txamt'].sum()
+    breakfast_addr_monney = df_breakfast[df_breakfast['meraddr']==max_breakfast_addr]['txamt'].sum()
     record.append({'事项':'吃早餐最常去的食堂','金额':breakfast_addr_monney,'时间':f'{year}年共{breakfast_addr_count}次','地点':max_breakfast_addr})
 
     # 记录吃早餐最常去的窗口及相对应的花费与次数，找到出现次数最多的mername
@@ -179,7 +179,7 @@ if __name__ == '__main__':
     df_lunch_addr = df_lunch_by_day['meraddr'].value_counts()
     max_lunch_addr = df_lunch_addr.idxmax()
     lunch_addr_count = df_lunch_addr.max()
-    lunch_addr_monney = df_lunch_by_day[df_lunch_by_day['meraddr']==max_lunch_addr]['txamt'].sum()
+    lunch_addr_monney = df_lunch[df_lunch['meraddr']==max_lunch_addr]['txamt'].sum()
     record.append({'事项':'吃午饭最常去的食堂','金额':lunch_addr_monney,'时间':f'{year}年共{lunch_addr_count}次','地点':max_lunch_addr})
 
     # 记录吃午饭最常去的窗口及相对应的花费与次数，找到出现次数最多的mername
@@ -215,7 +215,7 @@ if __name__ == '__main__':
     df_dinner_addr = df_dinner_by_day['meraddr'].value_counts()
     max_dinner_addr = df_dinner_addr.idxmax()
     dinner_addr_count = df_dinner_addr.max()
-    dinner_addr_monney = df_dinner_by_day[df_dinner_by_day['meraddr']==max_dinner_addr]['txamt'].sum()
+    dinner_addr_monney = df_dinner[df_dinner['meraddr']==max_dinner_addr]['txamt'].sum()
     record.append({'事项':'吃晚饭最常去的食堂','金额':dinner_addr_monney,'时间':f'{year}年共{dinner_addr_count}次','地点':max_dinner_addr})
 
     # 记录吃晚饭最常去的窗口及相对应的花费与次数，找到出现次数最多的mername
@@ -251,7 +251,7 @@ if __name__ == '__main__':
     df_midnight_addr = df_midnight_by_day['meraddr'].value_counts()
     max_midnight_addr = df_midnight_addr.idxmax()
     midnight_addr_count = df_midnight_addr.max()
-    midnight_addr_monney = df_midnight_by_day[df_midnight_by_day['meraddr']==max_midnight_addr]['txamt'].sum()
+    midnight_addr_monney = df_midnight[df_midnight['meraddr']==max_midnight_addr]['txamt'].sum()
     record.append({'事项':'吃宵夜最常去的食堂','金额':midnight_addr_monney,'时间':f'{year}年共{midnight_addr_count}次','地点':max_midnight_addr})
 
     # 记录吃宵夜最常去的窗口及相对应的花费与次数，找到出现次数最多的mername
