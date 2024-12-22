@@ -391,6 +391,90 @@ if __name__ == '__main__':
 {year}年，你最喜欢在 **{str(bath_most_time[5:])}** 的时候去 **{bath_most_time_location}** 洗澡，在这个时间段里你一共花了 **{bath_most_time_cost}** 元\n
 
 """
+    # 其它
+    sub_title_8 = f"## 8.其它\n"
+    sub_title_8_content = f"""
+
+"""
+    # 饮水
+    # 获取数据
+    # 饮水总花费
+    drink_spent = df_data.loc[df_data['事项'] == '饮水总次数','金额'].values[0]    
+
+    if drink_spent != 0:
+        # 饮水总次数
+        drink_count = df_data.loc[df_data['事项'] == '饮水总次数','时间'].values[0]
+        drink_count_int = drink_count[5:]
+        drink_count_int = drink_count_int[:-1]
+        drink_count_int = int(drink_count_int)   
+        # 最常饮水时间
+        drink_most_time = df_data.loc[df_data['事项'] == '最常饮水时间', '时间'].values[0]
+        drink_most_time_cost = df_data.loc[df_data['事项'] == '最常饮水时间', '金额'].values[0]
+        drink_most_time_location = df_data.loc[df_data['事项'] == '最常饮水时间', '地点'].values[0]
+
+        sub_title_8_content += f"""
+{year}年，你在华清大学共有 **{drink_count}** 次水，共花费 **{drink_spent}** 元。\n
+
+{year}年，你最喜欢在 **{str(drink_most_time[5:])}** 的时候去 **{drink_most_time_location}** 喝水，在这个时间段里你一共花了 **{drink_most_time_cost}** 元\n
+
+"""
+    
+    # 游泳
+    # 获取数据
+    # 游泳总花费
+    swim_spent = df_data.loc[df_data['事项'] == '游泳总次数','金额'].values[0]
+
+    if swim_spent != 0:
+        # 游泳总次数
+        swim_count = df_data.loc[df_data['事项'] == '游泳总次数','时间'].values[0]
+        swim_count_int = swim_count[5:]
+        swim_count_int = swim_count_int[:-1]
+        swim_count_int = int(swim_count_int)
+        # 最常游泳时间
+        swim_most_time = df_data.loc[df_data['事项'] == '最常游泳时间', '时间'].values[0]
+        swim_most_time_cost = df_data.loc[df_data['事项'] == '最常游泳时间', '金额'].values[0]
+        swim_most_time_location = df_data.loc[df_data['事项'] == '最常游泳时间', '地点'].values[0]
+
+        sub_title_8_content += f"""
+
+{year}年，你在华清大学共游了 **{swim_count_int}** 次泳，共花费 **{swim_spent}** 元。\n
+
+{year}年，你最喜欢在 **{str(swim_most_time[5:])}** 的时候去 **{swim_most_time_location}** 游泳，在这个时间段里你一共花了 **{swim_most_time_cost}** 元\n
+
+"""
+    
+    # 学生卡成本
+    # 获取数据
+    # 学生卡成本总花费
+    student_card_spent = df_data.loc[df_data['事项'] == '学生卡成本总次数','金额'].values[0]
+
+    if student_card_spent != 0:
+        # 学生卡成本总次数
+        student_card_count = df_data.loc[df_data['事项'] == '学生卡成本总次数','时间'].values[0]
+        student_card_count_int = student_card_count[5:]
+        student_card_count_int = student_card_count_int[:-1]
+        student_card_count_int = int(student_card_count_int)
+
+        sub_title_8_content += f"""
+{year}年，你在华清大学共补办了 **{student_card_count_int}** 次学生卡成本，为了补办学生卡你一共花费 **{student_card_spent}** 元。\n
+    """
+
+    # 自助打印成绩单
+    # 获取数据
+    # 自助打印成绩单总花费
+    print_score_spent = df_data.loc[df_data['事项'] == '自助打印成绩单总次数','金额'].values[0]
+
+    if print_score_spent != 0:
+        # 自助打印成绩单总次数
+        print_score_count = df_data.loc[df_data['事项'] == '自助打印成绩单总次数','时间'].values[0]
+        print_score_count_int = print_score_count[5:]
+        print_score_count_int = print_score_count_int[:-1]
+        print_score_count_int = int(print_score_count_int)
+
+        sub_title_8_content += f"""
+{year}年，你在华清大学共自助打印了 **{print_score_count_int}** 次成绩单，花费了 **{print_score_spent}** 元。\n
+    """
+
     # 生成Markdown内容
     markdown_content = f"""
 {tilte}
@@ -419,6 +503,10 @@ if __name__ == '__main__':
 
 {sub_title_7}
 {sub_title_7_content}
+
+{sub_title_8}
+{sub_title_8_content}
+
 
 """
     
