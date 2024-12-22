@@ -233,6 +233,7 @@ def draw_meal_canteen_count(df,result_path,year,username):
         for b in range(len(df_addr_count.columns)):
             # 标注数值，避免互相重叠
             # plt.text(a,b+5,int(df_addr_count.iloc[b,a]),ha='center',va='top',fontsize=8)
+            #TODO: 为了避免互相重叠，这里的坐标需要调整，请自行调整调整下行0.2和0.13的值
             plt.text(b-(0.2-a*0.13),int(df_addr_count.iloc[b,a]),int(df_addr_count.iloc[b,a]),ha='center',va='bottom',fontsize=8)
     # 设置标签
     plt.legend(title='食堂')
@@ -276,6 +277,7 @@ def draw_meal_window_count(df,result_path,year,username):
         for b in range(len(df_name_count.columns)):
             # 标注数值，避免互相重叠
             # plt.text(a,b+5,int(df_name_count.iloc[b,a]),ha='center',va='top',fontsize=8)
+            #TODO: 为了避免互相重叠，这里的坐标需要调整，请自行调整调整下行0.21和0.07的值
             plt.text(a - (0.21 - b*0.07),int(df_name_count.iloc[a,b]),int(df_name_count.iloc[a,b]),ha='center',va='bottom',fontsize=8)
     # 设置标签
     plt.legend(title='窗口')
@@ -303,6 +305,7 @@ if __name__ == '__main__':
     print('请输入年份')
     year = input()
 
+
     # 创建结果文件夹
     result_path = f'./results/{year}/'
     if not os.path.exists(result_path):
@@ -313,6 +316,10 @@ if __name__ == '__main__':
     with open('username.txt', 'r') as f:
         username = f.read()
     print('当前用户为：',username)
+
+    print(f"请输入你所涉及的宿舍楼，请保持与原始数据一致(如紫荆公寓6号楼)，\n可查看",result_path + f'data_{year}_{username}.csv','中的meraddr列')
+    apt = input()
+    apt = str(apt)
 
     # 读取数据
     df_all = pd.read_csv(result_path + f'data_{year}_{username}.csv')
@@ -347,11 +354,14 @@ if __name__ == '__main__':
     # 绘制交易窗口次数柱状图
     draw_window_trade_count(df,result_path,year,username)
 
+    # 去除洗澡、游泳、打印、学生卡成本的数据（欢迎补充，因为本人除吃饭外的开销就这些了hhhhh）
+    df_meal = df[df['meraddr'] != apt & df['meraddr'] != '自助打印成绩单' & df['meraddr'] != '学生卡成本' & df['meraddr'] != '西湖游泳池' & df['meraddr'] != '陈明游泳馆']
+
     # 绘制早餐、午饭、晚饭、宵夜常去的食堂的次数柱状图，绘制到一张图上，横坐标为早餐、午饭、晚饭、宵夜，食堂数分别取前三
-    draw_meal_canteen_count(df,result_path,year,username)
+    draw_meal_canteen_count(df_meal,result_path,year,username)
 
     # 绘制早餐、午饭、晚饭、宵夜常去的窗口的次数柱状图，绘制到一张图上，横坐标为早餐、午饭、晚饭、宵夜，窗口数分别取前三
-    draw_meal_window_count(df,result_path,year,username)
+    draw_meal_window_count(df_meal,result_path,year,username)
 
     # 绘制分地点交易次数饼图，除去在线充值
     draw_location_trade_count_pie(df,result_path,year,username)

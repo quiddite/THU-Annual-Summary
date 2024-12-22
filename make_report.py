@@ -189,7 +189,12 @@ if __name__ == '__main__':
 生活虽忙，也要记得好好吃早餐！\n
 
 """
-        
+    elif breakfast_count_int == 0:
+        sub_title_2_content_1 = f"""
+{year}年，你在华清大学共吃了 **{breakfast_count_int}** 顿早餐，共花费 **{breakfast_spent}** 元。\n
+从来不吃早餐？明年一定记得早点起床！\n
+
+"""   
     else:
         sub_title_2_content_1 = f"""
 {year}年，你在华清大学共吃了 **{breakfast_count_int}** 顿早餐，共花费 **{breakfast_spent}** 元。\n

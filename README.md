@@ -86,6 +86,20 @@ pip install requests matplotlib pycryptodome pandas numpy platform
 
 当获得 `data_{year}_{username}.csv`表格后，**运行 `show_data.py`文件**，输入对应的年份（4位纯数字如：2024），
 
+另外，部分图像可能需要自行调整参数，可以通过 `ctrl+F`查找关键字 `TODO`，包括 `show_data.py`第236—237行的：
+
+```
+#TODO: 为了避免互相重叠，这里的坐标需要调整，请自行调整调整下行0.2和0.13的值
+plt.text(b-(0.2-a*0.13),int(df_addr_count.iloc[b,a]),int(df_addr_count.iloc[b,a]),ha='center',va='bottom',fontsize=8)
+```
+
+和 `show_data.py`第280—281行的：
+
+```
+#TODO: 为了避免互相重叠，这里的坐标需要调整，请自行调整调整下行0.21和0.07的值
+plt.text(a - (0.21 - b*0.07),int(df_name_count.iloc[a,b]),int(df_name_count.iloc[a,b]),ha='center',va='bottom',fontsize=8)
+```
+
 可以得到部分数据的可视化图像（包含柱状图、饼图），存储于结果文件夹 `./results/`中，具体绘图内容可自行增删。
 
 请勿删除该文件，后续年度总结需要使用。
