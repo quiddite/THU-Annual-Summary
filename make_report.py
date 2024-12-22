@@ -139,7 +139,7 @@ if __name__ == '__main__':
 ![图片]({result_path}{username}_{year}年分时间校园卡交易金额饼图.png) \n
     
 你这一年里一共去过 **{canteen_count}**个食堂，**{window_count}**个窗口。\n
-分别这些食堂分别是 **{canteen_list}** \n
+这些食堂分别是 **{canteen_list}** \n
 
 """
     if canteen_count >= 10:
