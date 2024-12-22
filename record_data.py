@@ -87,23 +87,38 @@ if __name__ == '__main__':
     min_month_day_index = df.groupby(['month','day'])['txamt'].sum().idxmin()
     record.append({'事项':'分月与天交易金额最小值','金额':min_month_day,'时间':f'{year}年{min_month_day_index[0]}月{min_month_day_index[1]}日','地点':'无'})
 
-    # 记录最常去的地点及相对应的花费与次数，找到出现次数最多的mername，排除紫荆公寓6号楼、自助打印成绩单
+    # 记录最常去的地点及相对应的花费与次数，找到出现次数最多的mername，排除紫荆公寓6号楼、自助打印成绩单、学生卡成本
     df_addr = df[df['meraddr']!='紫荆公寓6号楼']
     df_addr = df_addr[df_addr['meraddr']!='自助打印成绩单']
+    df_addr = df_addr[df_addr['mername']!='学生卡成本']
     df_addr_count = df_addr['meraddr'].value_counts()
     max_addr = df_addr_count.idxmax()
     addr_count = df_addr_count.max()
     addr_monney = df_addr[df_addr['meraddr']==max_addr]['txamt'].sum()  
     record.append({'事项':'最常去的食堂','金额':addr_monney,'时间':f'{year}年共{addr_count}次','地点':max_addr})
 
-    # 记录最常去的窗口及相对应的花费与次数，找到出现次数最多的mername，排除紫荆公寓6号楼、自助打印成绩单
+    #记录去过的食堂
+    addr_list = df_addr['meraddr'].unique()
+    addr_list = addr_list.tolist()
+    addr_number = len(addr_list)
+    record.append({'事项':'去过的食堂','金额':None,'时间':f'{year}年共{addr_number}个','地点':addr_list})
+
+
+    # 记录最常去的窗口及相对应的花费与次数，找到出现次数最多的mername，排除紫荆公寓6号楼、自助打印成绩单、学生卡成本
     df_name = df[df['meraddr']!='紫荆公寓6号楼']
     df_name = df_name[df_name['mername']!='自助打印成绩单']
+    df_name = df_name[df_name['mername']!='学生卡成本']
     df_name_count = df_name['mername'].value_counts()
     max_name = df_name_count.idxmax()
     name_count = df_name_count.max()
     name_monney = df_name[df_name['mername']==max_name]['txamt'].sum()
     record.append({'事项':'最常去的窗口','金额':name_monney,'时间':f'{year}年共{name_count}次','地点':max_name})
+
+    #记录去过的窗口总数
+    name_list = df_name['mername'].unique()
+    name_list = name_list.tolist()
+    name_number = len(name_list)
+    record.append({'事项':'去过的窗口','金额':None,'时间':f'{year}年共{name_number}个','地点':name_list})
 
     # 记录累计消费最多的食堂及相对应的花费，找到总消费金额最大的meraddr，排除紫荆公寓6号楼、自助打印成绩单
     max_addr_cost = df_addr.groupby('meraddr')['txamt'].sum().idxmax()

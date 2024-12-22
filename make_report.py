@@ -96,6 +96,20 @@ if __name__ == '__main__':
     min_spent_day = df_data.loc[df_data['事项'] == '分月与天交易金额最小值', '时间'].values[0]
     min_spent_day_cost = df_data.loc[df_data['事项'] == '分月与天交易金额最小值', '金额'].values[0]
 
+    #去过的食堂与窗口
+    canteen_count = df_data.loc[df_data['事项'] == '去过的食堂','时间'].values[0]
+    canteen_count = canteen_count[6:]
+    canteen_count = canteen_count[:-1]
+    canteen_count = int(canteen_count)
+
+    canteen_list = df_data.loc[df_data['事项'] == '去过的食堂','地点'].values[0]
+
+    window_count = df_data.loc[df_data['事项'] == '去过的窗口','时间'].values[0]
+    window_count = window_count[6:]
+    window_count = window_count[:-1]
+    window_count = int(window_count)
+    
+
     sub_title_1 = f"## 1.总览\n"
     sub_title_1_content = f"""
 {year}年， **{username}** 在华清大学校园卡上共消费 **{total_spent}** 元， **{visit_count}** 交易成功，\n
@@ -124,8 +138,16 @@ if __name__ == '__main__':
 你在 **{min_spent_hour}** 时刷卡最少，只花了 **{min_spent_hour_cost}** 元。\n
 ![图片]({result_path}{username}_{year}年分时间校园卡交易金额饼图.png) \n
     
+你这一年里一共去过 **{canteen_count}**个食堂，**{window_count}**个窗口。\n
+分别这些食堂分别是 **{canteen_list}** \n
 
 """
+    if canteen_count >= 10:
+        sub_title_1_content += f"去过如此之多的食堂，堪称华清干饭王！ \n"
+    elif canteen_count < 5:
+        sub_title_1_content += f"才去了{canteen_count}个食堂，是不是该多尝试一下其他食堂呢？ \n"
+    else:
+        sub_title_1_content += f"华清之大，等你继续探索！ \n"
     
     # 早餐
     # 获取数据
