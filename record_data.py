@@ -12,6 +12,7 @@ if __name__ == '__main__':
     print('请输入年份')
     year = input()
 
+    
     # 创建结果文件夹
     result_path = f'./results/{year}/'
     if not os.path.exists(result_path):
@@ -22,6 +23,10 @@ if __name__ == '__main__':
     with open('username.txt', 'r') as f:
         username = f.read()
     print('当前用户为：',username)
+
+    print(f"请输入你所涉及的宿舍楼，请保持与原始数据一致(如紫荆公寓6号楼)，\n可查看",result_path + f'data_{year}_{username}.csv','中的meraddr列')
+    apt = input()
+    apt = str(apt)
 
     # 读取数据
     df_all = pd.read_csv(result_path + f'data_{year}_{username}.csv')
@@ -88,7 +93,7 @@ if __name__ == '__main__':
     record.append({'事项':'分月与天交易金额最小值','金额':min_month_day,'时间':f'{year}年{min_month_day_index[0]}月{min_month_day_index[1]}日','地点':'无'})
 
     # 记录最常去的地点及相对应的花费与次数，找到出现次数最多的mername，排除紫荆公寓6号楼、自助打印成绩单、学生卡成本
-    df_addr = df[df['meraddr']!='紫荆公寓6号楼']
+    df_addr = df[df['meraddr']!=apt]
     df_addr = df_addr[df_addr['meraddr']!='自助打印成绩单']
     df_addr = df_addr[df_addr['mername']!='学生卡成本']
     df_addr_count = df_addr['meraddr'].value_counts()
@@ -105,7 +110,7 @@ if __name__ == '__main__':
 
 
     # 记录最常去的窗口及相对应的花费与次数，找到出现次数最多的mername，排除紫荆公寓6号楼、自助打印成绩单、学生卡成本
-    df_name = df[df['meraddr']!='紫荆公寓6号楼']
+    df_name = df[df['meraddr']!=apt]
     df_name = df_name[df_name['mername']!='自助打印成绩单']
     df_name = df_name[df_name['mername']!='学生卡成本']
     df_name_count = df_name['mername'].value_counts()
@@ -134,7 +139,7 @@ if __name__ == '__main__':
     # 早餐：筛选出hour在4——9点的数据，排除meraddr为紫荆公寓6号楼、自助打印成绩单、学生卡成本的数据
     df_breakfast = df[(df['hour']==4)|(df['hour']==5)|(df['hour']==6)|(df['hour']==7)|(df['hour']==8)|(df['hour']==9)|(df['hour']=='4')|(df['hour']=='5')|(df['hour']=='6')|(df['hour']=='7')|(df['hour']=='8')|(df['hour']=='9')|(df['hour']=='04')|(df['hour']=='05')|(df['hour']=='06')|(df['hour']=='07')|(df['hour']=='08')|(df['hour']=='09')]
     #print(df_breakfast)
-    df_breakfast = df_breakfast[(df_breakfast['meraddr']!='紫荆公寓6号楼')&(df_breakfast['mername']!='自助打印成绩单')&(df_breakfast['mername']!='学生卡成本')]
+    df_breakfast = df_breakfast[(df_breakfast['meraddr']!=apt)&(df_breakfast['mername']!='自助打印成绩单')&(df_breakfast['mername']!='学生卡成本')]
 
     # 记录吃早餐最早时间，找到最接近6的一条数据，按照minute、second依次检索得最小的一条数据
     df_breakfast_early = df_breakfast.sort_values(by=['hour','minute','second'])
@@ -171,7 +176,7 @@ if __name__ == '__main__':
 
     # 午饭：筛选出hour在10——13点的数据，排除meraddr为紫荆公寓6号楼、自助打印成绩单的数据
     df_lunch = df[(df['hour']==10)|(df['hour']==11)|(df['hour']==12)|(df['hour']==13)|(df['hour']=='10')|(df['hour']=='11')|(df['hour']=='12')|(df['hour']=='13')]
-    df_lunch = df_lunch[(df_lunch['meraddr']!='紫荆公寓6号楼')&(df_lunch['mername']!='自助打印成绩单')&(df_lunch['mername']!='学生卡成本')]
+    df_lunch = df_lunch[(df_lunch['meraddr']!=apt)&(df_lunch['mername']!='自助打印成绩单')&(df_lunch['mername']!='学生卡成本')]
 
     # 记录吃午饭最早的时间，按照minute、second依次检索得最小的一条数据
     df_lunch_early = df_lunch.sort_values(by=['hour','minute','second'])
@@ -207,7 +212,7 @@ if __name__ == '__main__':
 
     # 晚饭：筛选出hour在16——19点的数据，排除meraddr为紫荆公寓6号楼、自助打印成绩单、学生卡成本的数据
     df_dinner = df[(df['hour']==16)|(df['hour']==17)|(df['hour']==18)|(df['hour']==19)|(df['hour']=='16')|(df['hour']=='17')|(df['hour']=='18')|(df['hour']=='19')]
-    df_dinner = df_dinner[(df_dinner['meraddr']!='紫荆公寓6号楼')&(df_dinner['mername']!='自助打印成绩单')&(df_dinner['mername']!='学生卡成本')]
+    df_dinner = df_dinner[(df_dinner['meraddr']!=apt)&(df_dinner['mername']!='自助打印成绩单')&(df_dinner['mername']!='学生卡成本')]
 
     # 记录吃晚饭最早时间，找到最接近17的一条数据，按照minute、second依次检索得最小的一条数据
     df_dinner_early = df_dinner.sort_values(by=['hour','minute','second'])
@@ -243,7 +248,7 @@ if __name__ == '__main__':
 
     # 吃宵夜：筛选出hour在20——23点的数据，排除meraddr为紫荆公寓6号楼、自助打印成绩单的数据
     df_midnight = df[(df['hour']==20)|(df['hour']==21)|(df['hour']==22)|(df['hour']==23)|(df['hour']=='20')|(df['hour']=='21')|(df['hour']=='22')|(df['hour']=='23')]
-    df_midnight = df_midnight[(df_midnight['meraddr']!='紫荆公寓6号楼')&(df_midnight['mername']!='自助打印成绩单')]
+    df_midnight = df_midnight[(df_midnight['meraddr']!=apt)&(df_midnight['mername']!='自助打印成绩单')]
 
     # 记录吃宵夜最早时间，找到最接近20的一条数据
     df_midnight_early = df_midnight.sort_values(by=['hour','minute','second'])
@@ -278,7 +283,7 @@ if __name__ == '__main__':
 
 
     # 洗澡：筛选出meraddr为紫荆公寓6号楼的数据
-    df_bath = df[df['meraddr']=='紫荆公寓6号楼']
+    df_bath = df[df['meraddr']==apt]
 
     # 记录洗澡最晚时间，找到hour为0，按照minute、second依次检索得最大的一条数据
     df_bath_late = df_bath[(df_bath['hour']==0)|(df_bath['hour']=='00')|(df_bath['hour']=='0')]

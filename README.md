@@ -12,18 +12,13 @@
 
 > 项目的数据分析与展示制作由本人[Zang Lee](https://github.com/MrZang27)完成。
 
-
 ## 1.获取数据
 
 > 项目数据获取方式请见[数据获取](https://github.com/leverimmy/THU-Annual-Eat)。
 
-
-
 ps:需要保证[校园卡网页](https://card.tsinghua.edu.cn/userselftrade)处于登录状态，如果重新登录，则需要在 `config.json`文件中更新servicehall再运行。
 
-
 注意，请使用本仓库的 `main.py`文件。
-
 
 如果直接使用[数据获取](https://github.com/leverimmy/THU-Annual-Eat)中的 `main.py`文件，并且在适当位置增加如下代码以实现获取不同年份数据，并存储数据：
 
@@ -40,7 +35,7 @@ ps:需要保证[校园卡网页](https://card.tsinghua.edu.cn/userselftrade)处�
         json.dump(data, f, indent=4)
 ```
 
-另外，如果自行修改，请把[数据获取](https://github.com/leverimmy/THU-Annual-Eat)中的 `main.py`代码中的`url`改为如下内容：
+另外，如果自行修改，请把[数据获取](https://github.com/leverimmy/THU-Annual-Eat)中的 `main.py`代码中的 `url`改为如下内容：
 
 ```
     # 发送请求，得到加密后的字符串
@@ -50,17 +45,13 @@ ps:需要保证[校园卡网页](https://card.tsinghua.edu.cn/userselftrade)处�
     }
 ```
 
-
-
 以上操作进行完成后，运行 `main.py`文件，输入所获取数据的年份（4位纯数字，如：2024）。
-
 
 **如果直接用本仓库 `main.py`文件，可忽略以上内容。**
 
 最终可获得记录了原始数据的 `data_{year}.json`文件。
 
 请勿删除该文件，后续数据处理需要使用。
-
 
 ## 2.数据展示
 
@@ -74,25 +65,30 @@ pip install requests matplotlib pycryptodome pandas numpy platform
 
 > 你可能需要在 `Python\Python312\Lib\site-packages` 目录下将 `crypto` 文件夹改名为 `Crypto`。
 
-
 ### 2.2数据处理
 
-当获取到 `data_{year}.json`文件后，运行 `convert_data.py`文件，输入对应的年份（4位纯数字如：2024），可以得到记录了有效数据的 `data_{year}_{username}.csv`表格与记录了当前用户名的 `username.txt`文件，会自动存储于结果文件夹 `./results/`中，请勿删除，后续数据分析需要使用。
+当获取到 `data_{year}.json`文件后，**运行 `convert_data.py`文件**，输入对应的年份（4位纯数字如：2024），
 
+可以得到记录了有效数据的 `data_{year}_{username}.csv`表格与记录了当前用户名的 `username.txt`文件，会自动存储于结果文件夹 `./results/`中，请勿删除，后续数据分析需要使用。
 
 ### 2.3数据分析
 
-当获得 `data_{year}_{username}.csv`表格后，运行 `record_data.py`文件，输入对应的年份（4位纯数字如：2024），可以得到一个记录有 “事项”、“金额”、“时间/次数”、“地点” 的表格 `{username}_{year}年校园卡交易总结记录.csv`，存储于结果文件夹 `./results/`中，具体记录事项可自行于 `record_data.py`文件中增删。
+当获得 `data_{year}_{username}.csv`表格后，**运行 `record_data.py`文件**，输入对应的年份（4位纯数字如：2024），以及你的消费所涉及的宿舍楼（请保持与表格中meraddr列所记录的一致，如：紫荆公寓6号楼）
+
+可以得到一个记录有 “事项”、“金额”、“时间/次数”、“地点” 的表格 `{username}_{year}年校园卡交易总结记录.csv`，存储于结果文件夹 `./results/`中，具体记录事项可自行于 `record_data.py`文件中增删。
 
 请勿删除该文件，后续年度总结需要使用。
 
+
+注意：请将所有涉及到宿舍楼的内容（如"紫荆公寓6号楼")更替为你自己所在的宿舍楼或你去洗过澡的宿舍楼
 
 ### 2.4数据可视化
 
-当获得 `data_{year}_{username}.csv`表格后，运行 `show_data.py`文件，输入对应的年份（4位纯数字如：2024），可以得到部分数据的可视化图像（包含柱状图、饼图），存储于结果文件夹 `./results/`中，具体绘图内容可自行增删。
+当获得 `data_{year}_{username}.csv`表格后，**运行 `show_data.py`文件**，输入对应的年份（4位纯数字如：2024），
+
+可以得到部分数据的可视化图像（包含柱状图、饼图），存储于结果文件夹 `./results/`中，具体绘图内容可自行增删。
 
 请勿删除该文件，后续年度总结需要使用。
-
 
 ## 3.年度总结
 
