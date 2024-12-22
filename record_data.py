@@ -285,8 +285,11 @@ if __name__ == '__main__':
     # 洗澡：筛选出meraddr为紫荆公寓6号楼的数据
     df_bath = df[df['meraddr']==apt]
 
-    # 记录洗澡最晚时间，找到hour为0，按照minute、second依次检索得最大的一条数据
-    df_bath_late = df_bath[(df_bath['hour']==0)|(df_bath['hour']=='00')|(df_bath['hour']=='0')]
+    # 记录洗澡最晚时间，找到hour为0或者23及以前，按照minute、second依次检索得最大的一条数据
+    df_bath_late = df_bath[(df_bath['hour']==0)|(df_bath['hour']=='00')|(df_bath['hour']=='0')(df_bath['hour']==1)|(df_bath['hour']=='01')|(df_bath['hour']=='1')]
+    if df_bath_late.shape[0] == 0:
+        df_bath_late = df_bath[(df_bath['hour']==23)|(df_bath['hour']=='23')|(df_bath['hour']==22)|(df_bath['hour']=='22')|(df_bath['hour']==21)|(df_bath['hour']=='21')|(df_bath['hour']==20)|(df_bath['hour']=='20')|(df_bath['hour']==19)|(df_bath['hour']=='19')|(df_bath['hour']==18)|(df_bath['hour']=='18')|(df_bath['hour']==17)|(df_bath['hour']=='17')|(df_bath['hour']==16)|(df_bath['hour']=='16')]
+    
     df_bath_late = df_bath_late.sort_values(by=['minute','second'],ascending=False)
     df_bath_latest = df_bath_late.iloc[0]
     record.append({'事项':'洗澡最晚时间','金额':df_bath_latest['txamt'],'时间':f'{year}年{df_bath_latest["month"]}月{df_bath_latest["day"]}日{df_bath_latest["hour"]}时{df_bath_latest["minute"]}分{df_bath_latest["second"]}秒','地点':df_bath_latest['mername']})
