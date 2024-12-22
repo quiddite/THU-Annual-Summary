@@ -355,7 +355,7 @@ if __name__ == '__main__':
     draw_window_trade_count(df,result_path,year,username)
 
     # 去除洗澡、游泳、打印、学生卡成本的数据（欢迎补充，因为本人除吃饭外的开销就这些了hhhhh）
-    df_meal = df[df['meraddr'] != apt & df['meraddr'] != '自助打印成绩单' & df['meraddr'] != '学生卡成本' & df['meraddr'] != '西湖游泳池' & df['meraddr'] != '陈明游泳馆']
+    df_meal = df[(df['meraddr'] != apt) & (df['meraddr'] != '自助打印成绩单') & (df['meraddr'] != '学生卡成本') & (df['meraddr'] != '西湖游泳池') & (df['meraddr'] != '陈明游泳馆')]
 
     # 绘制早餐、午饭、晚饭、宵夜常去的食堂的次数柱状图，绘制到一张图上，横坐标为早餐、午饭、晚饭、宵夜，食堂数分别取前三
     draw_meal_canteen_count(df_meal,result_path,year,username)
