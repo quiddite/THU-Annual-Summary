@@ -434,7 +434,7 @@ if __name__ == '__main__':
 
 在 **{bath_latest_time}** 的时候，你才在 **{bath_latest_time_location}** 洗完澡，花费了 **{bath_latest_time_cost}** 元\n
 
-{year}年，你最喜欢在 **{str(bath_most_time[5:])}** 的时候去 **{bath_most_time_location}** 洗澡，在这个时间段里你一共花了 **{bath_most_time_cost}** 元\n
+{year}年，你总是在 **{str(bath_most_time[5:])}** 的时候于 **{bath_most_time_location}** 结束洗澡，在这个时间段结束的洗澡一共花了你 **{bath_most_time_cost}** 元\n
 
 """
     # 其它
