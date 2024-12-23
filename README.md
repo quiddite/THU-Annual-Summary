@@ -79,7 +79,6 @@ pip install requests matplotlib pycryptodome pandas numpy platform
 
 请勿删除该文件，后续年度总结需要使用。
 
-
 注意：请将所有涉及到宿舍楼的内容（如"紫荆公寓6号楼")更替为你自己所在的宿舍楼或你去洗过澡的宿舍楼
 
 ### 2.4数据可视化
@@ -90,7 +89,7 @@ pip install requests matplotlib pycryptodome pandas numpy platform
 
 ```
 #TODO: 为了避免互相重叠，这里的坐标需要调整，请自行调整调整下行0.2和0.13的值
-plt.text(b-(0.2-a*0.13),int(df_addr_count.iloc[b,a]),int(df_addr_count.iloc[b,a]),ha='center',va='bottom',fontsize=8)
+plt.text(a-(0.2-b*0.13),int(df_addr_count.iloc[a,b]),int(df_addr_count.iloc[b,a]),ha='center',va='bottom',fontsize=8)
 ```
 
 和 `show_data.py`第280—281行的：
