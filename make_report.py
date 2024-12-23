@@ -410,33 +410,33 @@ if __name__ == '__main__':
     # 洗澡
     # 获取数据
 
-    # 洗澡总次数
-    bath_count = df_data.loc[df_data['事项'] == '洗澡总次数','时间'].values[0]
-    bath_count_int = bath_count[5:]
-    bath_count_int = bath_count_int[:-1]
-    bath_count_int = int(bath_count_int)
-    bath_spent = df_data.loc[df_data['事项'] == '洗澡总次数','金额'].values[0]
+    # # 洗澡总次数
+    # bath_count = df_data.loc[df_data['事项'] == '洗澡总次数','时间'].values[0]
+    # bath_count_int = bath_count[5:]
+    # bath_count_int = bath_count_int[:-1]
+    # bath_count_int = int(bath_count_int)
+    # bath_spent = df_data.loc[df_data['事项'] == '洗澡总次数','金额'].values[0]
 
-    # 洗澡最晚时间
-    bath_latest_time = df_data.loc[df_data['事项'] == '洗澡最晚时间', '时间'].values[0]
-    bath_latest_time_cost = df_data.loc[df_data['事项'] == '洗澡最晚时间', '金额'].values[0]
-    bath_latest_time_location = df_data.loc[df_data['事项'] == '洗澡最晚时间', '地点'].values[0]
+    # # 洗澡最晚时间
+    # bath_latest_time = df_data.loc[df_data['事项'] == '洗澡最晚时间', '时间'].values[0]
+    # bath_latest_time_cost = df_data.loc[df_data['事项'] == '洗澡最晚时间', '金额'].values[0]
+    # bath_latest_time_location = df_data.loc[df_data['事项'] == '洗澡最晚时间', '地点'].values[0]
 
-    # 最常洗澡时间
-    bath_most_time = df_data.loc[df_data['事项'] == '最常洗澡时间', '时间'].values[0]
-    bath_most_time_cost = df_data.loc[df_data['事项'] == '最常洗澡时间', '金额'].values[0]
-    bath_most_time_location = df_data.loc[df_data['事项'] == '最常洗澡时间', '地点'].values[0]
+    # # 最常洗澡时间
+    # bath_most_time = df_data.loc[df_data['事项'] == '最常洗澡时间', '时间'].values[0]
+    # bath_most_time_cost = df_data.loc[df_data['事项'] == '最常洗澡时间', '金额'].values[0]
+    # bath_most_time_location = df_data.loc[df_data['事项'] == '最常洗澡时间', '地点'].values[0]
 
-    sub_title_7 = f"## 7.洗澡\n"
+    # sub_title_7 = f"## 7.洗澡\n"
 
-    sub_title_7_content = f"""
-{year}年，你在华清大学共洗了 **{bath_count_int}** 次澡，共花费 **{bath_spent}** 元。\n
+#     sub_title_7_content = f"""
+# {year}年，你在华清大学共洗了 **{bath_count_int}** 次澡，共花费 **{bath_spent}** 元。\n
 
-在 **{bath_latest_time}** 的时候，你才在 **{bath_latest_time_location}** 洗完澡，花费了 **{bath_latest_time_cost}** 元\n
+# 在 **{bath_latest_time}** 的时候，你才在 **{bath_latest_time_location}** 洗完澡，花费了 **{bath_latest_time_cost}** 元\n
 
-{year}年，你总是在 **{str(bath_most_time[5:])}** 的时候于 **{bath_most_time_location}** 结束洗澡，在这个时间段结束的洗澡一共花了你 **{bath_most_time_cost}** 元\n
+# {year}年，你总是在 **{str(bath_most_time[5:])}** 的时候于 **{bath_most_time_location}** 结束洗澡，在这个时间段结束的洗澡一共花了你 **{bath_most_time_cost}** 元\n
 
-"""
+# """
     # 其它
     sub_title_8 = f"## 8.其它\n"
     sub_title_8_content = f"""
@@ -546,9 +546,6 @@ if __name__ == '__main__':
 
 {sub_title_6}
 {sub_title_6_content}
-
-{sub_title_7}
-{sub_title_7_content}
 
 {sub_title_8}
 {sub_title_8_content}

@@ -20,8 +20,8 @@ def decrypt_aes_ecb(encrypted_data: str) -> str:
 
     return decrypted_data.decode('utf-8')
 
-idserial = ""
-servicehall = ""
+idserial = "1345456"
+servicehall = "NzI4ZDkxNzItOWRjMS00ODAwLTlhMjQtYzI3YTYyYzI2MGN"
 all_data = dict()
 
 if __name__ == "__main__":
@@ -44,6 +44,7 @@ if __name__ == "__main__":
             json.dump({"idserial": idserial, "servicehall": servicehall}, f, indent=4)
     
     # 发送请求，得到加密后的字符串
+        # 发送请求，得到加密后的字符串
     url = f"https://card.tsinghua.edu.cn/business/querySelfTradeList?pageNumber=0&pageSize=5000&starttime={year}-01-01&endtime={year}-12-31&idserial={idserial}&tradetype=-1"
     cookie = {
         "servicehall": servicehall,
