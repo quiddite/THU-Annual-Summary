@@ -234,7 +234,7 @@ def draw_meal_canteen_count(df,result_path,year,username):
             # 标注数值，避免互相重叠
             # plt.text(a,b+5,int(df_addr_count.iloc[b,a]),ha='center',va='top',fontsize=8)
             #TODO: 为了避免互相重叠，这里的坐标需要调整，请自行调整调整下行0.2和0.13的值
-            plt.text(a-(0.2-b*0.13),int(df_addr_count.iloc[a,b]),int(df_addr_count.iloc[b,a]),ha='center',va='bottom',fontsize=8)
+            plt.text(a-(0.2-b*0.13),int(df_addr_count.iloc[a,b]),int(df_addr_count.iloc[a,b]),ha='center',va='bottom',fontsize=8)
     # 设置标签
     plt.legend(title='食堂')
     # 设置x轴标签
