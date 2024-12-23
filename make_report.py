@@ -153,32 +153,37 @@ if __name__ == '__main__':
     # 获取数据
 
     # 吃早餐总次数
-    breakfast_count = df_data.loc[df_data['事项'] == '吃早餐总次数','时间'].values[0]
-    breakfast_count_int = breakfast_count[6:]
-    breakfast_count_int = breakfast_count_int[:-1]
-    #print(breakfast_count_int)
-    breakfast_count_int = int(breakfast_count_int)
     breakfast_spent = df_data.loc[df_data['事项'] == '吃早餐总次数','金额'].values[0]
 
-    # 吃早餐最常去的食堂
-    breakfast_most_visited_canteen = df_data.loc[df_data['事项'] == '吃早餐最常去的食堂', '地点'].values[0]
-    breakfast_most_visited_canteen_count = df_data.loc[df_data['事项'] == '吃早餐最常去的食堂', '时间'].values[0]
-    breakfast_most_visited_canteen_spent = df_data.loc[df_data['事项'] == '吃早餐最常去的食堂', '金额'].values[0]
+    if breakfast_spent == 0:
+        breakfast_count_int = 0
+        breakfast_most_visited_canteen = '不吃早餐'
 
-    # 吃早餐最常去的窗口
-    breakfast_most_visited_window = df_data.loc[df_data['事项'] == '吃早餐最常去的窗口', '地点'].values[0]
-    breakfast_most_visited_window_count = df_data.loc[df_data['事项'] == '吃早餐最常去的窗口', '时间'].values[0]
-    breakfast_most_visited_window_spent = df_data.loc[df_data['事项'] == '吃早餐最常去的窗口', '金额'].values[0]
+    else:
+        breakfast_count = df_data.loc[df_data['事项'] == '吃早餐总次数','时间'].values[0]
+        breakfast_count_int = breakfast_count[6:]
+        breakfast_count_int = breakfast_count_int[:-1]
+        breakfast_count_int = int(breakfast_count_int)    
 
-    # 吃早餐最早时间
-    breakfast_earliest_time = df_data.loc[df_data['事项'] == '吃早餐最早时间', '时间'].values[0]
-    breakfast_earliest_time_cost = df_data.loc[df_data['事项'] == '吃早餐最早时间', '金额'].values[0]
-    breakfast_earliest_time_location = df_data.loc[df_data['事项'] == '吃早餐最早时间', '地点'].values[0]
+        # 吃早餐最常去的食堂
+        breakfast_most_visited_canteen = df_data.loc[df_data['事项'] == '吃早餐最常去的食堂', '地点'].values[0]
+        breakfast_most_visited_canteen_count = df_data.loc[df_data['事项'] == '吃早餐最常去的食堂', '时间'].values[0]
+        breakfast_most_visited_canteen_spent = df_data.loc[df_data['事项'] == '吃早餐最常去的食堂', '金额'].values[0]
 
-    # 吃早餐最晚时间
-    breakfast_latest_time = df_data.loc[df_data['事项'] == '吃早餐最晚时间', '时间'].values[0]
-    breakfast_latest_time_cost = df_data.loc[df_data['事项'] == '吃早餐最晚时间', '金额'].values[0]
-    breakfast_latest_time_location = df_data.loc[df_data['事项'] == '吃早餐最晚时间', '地点'].values[0]
+        # 吃早餐最常去的窗口
+        breakfast_most_visited_window = df_data.loc[df_data['事项'] == '吃早餐最常去的窗口', '地点'].values[0]
+        breakfast_most_visited_window_count = df_data.loc[df_data['事项'] == '吃早餐最常去的窗口', '时间'].values[0]
+        breakfast_most_visited_window_spent = df_data.loc[df_data['事项'] == '吃早餐最常去的窗口', '金额'].values[0]
+
+        # 吃早餐最早时间
+        breakfast_earliest_time = df_data.loc[df_data['事项'] == '吃早餐最早时间', '时间'].values[0]
+        breakfast_earliest_time_cost = df_data.loc[df_data['事项'] == '吃早餐最早时间', '金额'].values[0]
+        breakfast_earliest_time_location = df_data.loc[df_data['事项'] == '吃早餐最早时间', '地点'].values[0]
+
+        # 吃早餐最晚时间
+        breakfast_latest_time = df_data.loc[df_data['事项'] == '吃早餐最晚时间', '时间'].values[0]
+        breakfast_latest_time_cost = df_data.loc[df_data['事项'] == '吃早餐最晚时间', '金额'].values[0]
+        breakfast_latest_time_location = df_data.loc[df_data['事项'] == '吃早餐最晚时间', '地点'].values[0]
 
 
     sub_title_2 = f"## 2.早餐\n"
@@ -215,34 +220,42 @@ if __name__ == '__main__':
     # 获取数据
 
     # 吃午饭总次数
-    lunch_count = df_data.loc[df_data['事项'] == '吃午饭总次数','时间'].values[0]
-    lunch_count_int = lunch_count[6:]
-    lunch_count_int = lunch_count_int[:-1]
-    lunch_count_int = int(lunch_count_int)
     lunch_spent = df_data.loc[df_data['事项'] == '吃午饭总次数','金额'].values[0]
 
-    # 吃午饭最常去的食堂
-    lunch_most_visited_canteen = df_data.loc[df_data['事项'] == '吃午饭最常去的食堂', '地点'].values[0]
-    lunch_most_visited_canteen_count = df_data.loc[df_data['事项'] == '吃午饭最常去的食堂', '时间'].values[0]
-    lunch_most_visited_canteen_spent = df_data.loc[df_data['事项'] == '吃午饭最常去的食堂', '金额'].values[0]
+    if lunch_spent == 0:
+        lunch_count_int = 0
+        lunch_most_visited_canteen = '不吃午餐or外卖'
 
-    # 吃午饭最常去的窗口
-    lunch_most_visited_window = df_data.loc[df_data['事项'] == '吃午饭最常去的窗口', '地点'].values[0]
-    lunch_most_visited_window_count = df_data.loc[df_data['事项'] == '吃午饭最常去的窗口', '时间'].values[0]
-    lunch_most_visited_window_spent = df_data.loc[df_data['事项'] == '吃午饭最常去的窗口', '金额'].values[0]
+    else:
+        lunch_count = df_data.loc[df_data['事项'] == '吃午饭总次数','时间'].values[0]
+        lunch_count_int = lunch_count[6:]
+        lunch_count_int = lunch_count_int[:-1]
+        lunch_count_int = int(lunch_count_int)
 
-    # 吃午饭最早时间
-    lunch_earliest_time = df_data.loc[df_data['事项'] == '吃午饭最早时间', '时间'].values[0]
-    lunch_earliest_time_cost = df_data.loc[df_data['事项'] == '吃午饭最早时间', '金额'].values[0]
-    lunch_earliest_time_location = df_data.loc[df_data['事项'] == '吃午饭最早时间', '地点'].values[0]
+        # 吃午饭最常去的食堂
+        lunch_most_visited_canteen = df_data.loc[df_data['事项'] == '吃午饭最常去的食堂', '地点'].values[0]
+        lunch_most_visited_canteen_count = df_data.loc[df_data['事项'] == '吃午饭最常去的食堂', '时间'].values[0]
+        lunch_most_visited_canteen_spent = df_data.loc[df_data['事项'] == '吃午饭最常去的食堂', '金额'].values[0]
 
-    # 吃午饭最晚时间
-    lunch_latest_time = df_data.loc[df_data['事项'] == '吃午饭最晚时间', '时间'].values[0]
-    lunch_latest_time_cost = df_data.loc[df_data['事项'] == '吃午饭最晚时间', '金额'].values[0]
-    lunch_latest_time_location = df_data.loc[df_data['事项'] == '吃午饭最晚时间', '地点'].values[0]
+        # 吃午饭最常去的窗口
+        lunch_most_visited_window = df_data.loc[df_data['事项'] == '吃午饭最常去的窗口', '地点'].values[0]
+        lunch_most_visited_window_count = df_data.loc[df_data['事项'] == '吃午饭最常去的窗口', '时间'].values[0]
+        lunch_most_visited_window_spent = df_data.loc[df_data['事项'] == '吃午饭最常去的窗口', '金额'].values[0]
+
+        # 吃午饭最早时间
+        lunch_earliest_time = df_data.loc[df_data['事项'] == '吃午饭最早时间', '时间'].values[0]
+        lunch_earliest_time_cost = df_data.loc[df_data['事项'] == '吃午饭最早时间', '金额'].values[0]
+        lunch_earliest_time_location = df_data.loc[df_data['事项'] == '吃午饭最早时间', '地点'].values[0]
+
+        # 吃午饭最晚时间
+        lunch_latest_time = df_data.loc[df_data['事项'] == '吃午饭最晚时间', '时间'].values[0]
+        lunch_latest_time_cost = df_data.loc[df_data['事项'] == '吃午饭最晚时间', '金额'].values[0]
+        lunch_latest_time_location = df_data.loc[df_data['事项'] == '吃午饭最晚时间', '地点'].values[0]
 
     sub_title_3 = f"## 3.午饭\n"
-    sub_title_3_content = f"""
+    
+    if lunch_count_int != 0:
+        sub_title_3_content = f"""
 {year}年，你在华清大学共吃了 **{lunch_count_int}** 顿午饭，共花费 **{lunch_spent}** 元。\n
     
 还记得 **{lunch_earliest_time}** 的时候就已经点好了 **{lunch_earliest_time_location}** ，这顿午饭花了 **{lunch_earliest_time_cost}** 元,这是你{year}年午餐吃得最早的一次；\n
@@ -254,42 +267,56 @@ if __name__ == '__main__':
     
 
 """
+    else:
+        sub_title_3_content = f"""
+{year}年，你在华清大学共吃了 **{lunch_count_int}** 顿午饭，共花费 **{lunch_spent}** 元。\n
+从来不吃午餐？看来你就是华清大学外卖专业户！\n
+
+"""
 
     # 晚饭
 
     # 获取数据
 
     # 吃晚饭总次数
-    dinner_count = df_data.loc[df_data['事项'] == '吃晚饭总次数','时间'].values[0]
-    dinner_count_int = dinner_count[6:]
-    dinner_count_int = dinner_count_int[:-1]
-    dinner_count_int = int(dinner_count_int)
     dinner_spent = df_data.loc[df_data['事项'] == '吃晚饭总次数','金额'].values[0]
 
-    # 吃晚饭最常去的食堂
-    dinner_most_visited_canteen = df_data.loc[df_data['事项'] == '吃晚饭最常去的食堂', '地点'].values[0]
-    dinner_most_visited_canteen_count = df_data.loc[df_data['事项'] == '吃晚饭最常去的食堂', '时间'].values[0]
-    dinner_most_visited_canteen_spent = df_data.loc[df_data['事项'] == '吃晚饭最常去的食堂', '金额'].values[0]
+    if dinner_spent == 0:
+        dinner_count_int = 0
+        dinner_most_visited_canteen = '不吃晚餐or外卖'
 
-    # 吃晚饭最常去的窗口
-    dinner_most_visited_window = df_data.loc[df_data['事项'] == '吃晚饭最常去的窗口', '地点'].values[0]
-    dinner_most_visited_window_count = df_data.loc[df_data['事项'] == '吃晚饭最常去的窗口', '时间'].values[0]
-    dinner_most_visited_window_spent = df_data.loc[df_data['事项'] == '吃晚饭最常去的窗口', '金额'].values[0]
+    else:
+        dinner_count = df_data.loc[df_data['事项'] == '吃晚饭总次数','时间'].values[0]
+        dinner_count_int = dinner_count[6:]
+        dinner_count_int = dinner_count_int[:-1]
+        dinner_count_int = int(dinner_count_int)
+        
 
-    # 吃晚饭最早时间
-    dinner_earliest_time = df_data.loc[df_data['事项'] == '吃晚饭最早时间', '时间'].values[0]
-    dinner_earliest_time_cost = df_data.loc[df_data['事项'] == '吃晚饭最早时间', '金额'].values[0]
-    dinner_earliest_time_location = df_data.loc[df_data['事项'] == '吃晚饭最早时间', '地点'].values[0]
+        # 吃晚饭最常去的食堂
+        dinner_most_visited_canteen = df_data.loc[df_data['事项'] == '吃晚饭最常去的食堂', '地点'].values[0]
+        dinner_most_visited_canteen_count = df_data.loc[df_data['事项'] == '吃晚饭最常去的食堂', '时间'].values[0]
+        dinner_most_visited_canteen_spent = df_data.loc[df_data['事项'] == '吃晚饭最常去的食堂', '金额'].values[0]
 
-    # 吃晚饭最晚时间
-    dinner_latest_time = df_data.loc[df_data['事项'] == '吃晚饭最晚时间', '时间'].values[0]
-    dinner_latest_time_cost = df_data.loc[df_data['事项'] == '吃晚饭最晚时间', '金额'].values[0]
+        # 吃晚饭最常去的窗口
+        dinner_most_visited_window = df_data.loc[df_data['事项'] == '吃晚饭最常去的窗口', '地点'].values[0]
+        dinner_most_visited_window_count = df_data.loc[df_data['事项'] == '吃晚饭最常去的窗口', '时间'].values[0]
+        dinner_most_visited_window_spent = df_data.loc[df_data['事项'] == '吃晚饭最常去的窗口', '金额'].values[0]
 
-    dinner_latest_time_location = df_data.loc[df_data['事项'] == '吃晚饭最晚时间', '地点'].values[0]
+        # 吃晚饭最早时间
+        dinner_earliest_time = df_data.loc[df_data['事项'] == '吃晚饭最早时间', '时间'].values[0]
+        dinner_earliest_time_cost = df_data.loc[df_data['事项'] == '吃晚饭最早时间', '金额'].values[0]
+        dinner_earliest_time_location = df_data.loc[df_data['事项'] == '吃晚饭最早时间', '地点'].values[0]
+
+        # 吃晚饭最晚时间
+        dinner_latest_time = df_data.loc[df_data['事项'] == '吃晚饭最晚时间', '时间'].values[0]
+        dinner_latest_time_cost = df_data.loc[df_data['事项'] == '吃晚饭最晚时间', '金额'].values[0]
+
+        dinner_latest_time_location = df_data.loc[df_data['事项'] == '吃晚饭最晚时间', '地点'].values[0]
 
     sub_title_4 = f"## 4.晚饭\n"
 
-    sub_title_4_content = f"""
+    if dinner_count_int == 0:
+        sub_title_4_content = f"""
 {year}年，你在华清大学共吃了 **{dinner_count_int}** 顿晚饭，共花费 **{dinner_spent}** 元。\n
 
 **{dinner_earliest_time}** 就已经去点好了 **{dinner_earliest_time_location}** ，这顿晚饭花了 **{dinner_earliest_time_cost}** 元,这是你{year}年晚餐吃得最早的一次；\n
@@ -300,41 +327,54 @@ if __name__ == '__main__':
 **{dinner_most_visited_window}** 是你晚餐的最爱， **{dinner_most_visited_window_count}** 在这里点了晚餐，共花费了 **{dinner_most_visited_window_spent}** 元。\n
 
 """
+    else:
+        sub_title_4_content = f"""
+{year}年，你在华清大学共吃了 **{dinner_count_int}** 顿晚饭，共花费 **{dinner_spent}** 元。\n
+从来不吃晚饭？看来你就是华清大学外卖专业户！\n
+
+"""
     
     # 宵夜
 
     # 获取数据
 
     # 吃宵夜总次数
-    midnight_snack_count = df_data.loc[df_data['事项'] == '吃宵夜总次数','时间'].values[0]
-    midnight_snack_count_int = midnight_snack_count[6:]
-    midnight_snack_count_int = midnight_snack_count_int[:-1]
-    midnight_snack_count_int = int(midnight_snack_count_int)
     midnight_snack_spent = df_data.loc[df_data['事项'] == '吃宵夜总次数','金额'].values[0]
 
-    # 吃宵夜最常去的食堂
-    midnight_snack_most_visited_canteen = df_data.loc[df_data['事项'] == '吃宵夜最常去的食堂', '地点'].values[0]
-    midnight_snack_most_visited_canteen_count = df_data.loc[df_data['事项'] == '吃宵夜最常去的食堂', '时间'].values[0]
-    midnight_snack_most_visited_canteen_spent = df_data.loc[df_data['事项'] == '吃宵夜最常去的食堂', '金额'].values[0]
+    if midnight_snack_spent == 0:
+        midnight_snack_count_int = 0
+        midnight_snack_most_visited_canteen = '不吃宵夜'
 
-    # 吃宵夜最常去的窗口
-    midnight_snack_most_visited_window = df_data.loc[df_data['事项'] == '吃宵夜最常去的窗口', '地点'].values[0]
-    midnight_snack_most_visited_window_count = df_data.loc[df_data['事项'] == '吃宵夜最常去的窗口', '时间'].values[0]
-    midnight_snack_most_visited_window_spent = df_data.loc[df_data['事项'] == '吃宵夜最常去的窗口', '金额'].values[0]
+    else:
+        midnight_snack_count = df_data.loc[df_data['事项'] == '吃宵夜总次数','时间'].values[0]
+        midnight_snack_count_int = midnight_snack_count[6:]
+        midnight_snack_count_int = midnight_snack_count_int[:-1]
+        midnight_snack_count_int = int(midnight_snack_count_int)    
 
-    # 吃宵夜最早时间
-    midnight_snack_earliest_time = df_data.loc[df_data['事项'] == '吃宵夜最早时间', '时间'].values[0]
-    midnight_snack_earliest_time_cost = df_data.loc[df_data['事项'] == '吃宵夜最早时间', '金额'].values[0]
-    midnight_snack_earliest_time_location = df_data.loc[df_data['事项'] == '吃宵夜最早时间', '地点'].values[0]
+        # 吃宵夜最常去的食堂
+        midnight_snack_most_visited_canteen = df_data.loc[df_data['事项'] == '吃宵夜最常去的食堂', '地点'].values[0]
+        midnight_snack_most_visited_canteen_count = df_data.loc[df_data['事项'] == '吃宵夜最常去的食堂', '时间'].values[0]
+        midnight_snack_most_visited_canteen_spent = df_data.loc[df_data['事项'] == '吃宵夜最常去的食堂', '金额'].values[0]
 
-    # 吃宵夜最晚时间
-    midnight_snack_latest_time = df_data.loc[df_data['事项'] == '吃宵夜最晚时间', '时间'].values[0]
-    midnight_snack_latest_time_cost = df_data.loc[df_data['事项'] == '吃宵夜最晚时间', '金额'].values[0]
-    midnight_snack_latest_time_location = df_data.loc[df_data['事项'] == '吃宵夜最晚时间', '地点'].values[0]
+        # 吃宵夜最常去的窗口
+        midnight_snack_most_visited_window = df_data.loc[df_data['事项'] == '吃宵夜最常去的窗口', '地点'].values[0]
+        midnight_snack_most_visited_window_count = df_data.loc[df_data['事项'] == '吃宵夜最常去的窗口', '时间'].values[0]
+        midnight_snack_most_visited_window_spent = df_data.loc[df_data['事项'] == '吃宵夜最常去的窗口', '金额'].values[0]
+
+        # 吃宵夜最早时间
+        midnight_snack_earliest_time = df_data.loc[df_data['事项'] == '吃宵夜最早时间', '时间'].values[0]
+        midnight_snack_earliest_time_cost = df_data.loc[df_data['事项'] == '吃宵夜最早时间', '金额'].values[0]
+        midnight_snack_earliest_time_location = df_data.loc[df_data['事项'] == '吃宵夜最早时间', '地点'].values[0]
+
+        # 吃宵夜最晚时间
+        midnight_snack_latest_time = df_data.loc[df_data['事项'] == '吃宵夜最晚时间', '时间'].values[0]
+        midnight_snack_latest_time_cost = df_data.loc[df_data['事项'] == '吃宵夜最晚时间', '金额'].values[0]
+        midnight_snack_latest_time_location = df_data.loc[df_data['事项'] == '吃宵夜最晚时间', '地点'].values[0]
 
     sub_title_5 = f"## 5.宵夜\n"
 
-    sub_title_5_content = f"""
+    if midnight_snack_count_int == 0:
+        sub_title_5_content = f"""
 {year}年，你在华清大学共吃了 **{midnight_snack_count_int}** 顿宵夜，共花费 **{midnight_snack_spent}** 元。\n
 
 {year}年，你最早在 **{midnight_snack_earliest_time}** 的时候就去点了 **{midnight_snack_earliest_time_location}** ，这顿宵夜花了 **{midnight_snack_earliest_time_cost}** 元, 这是你{year}年宵夜吃得最早的一次；\n
@@ -343,6 +383,12 @@ if __name__ == '__main__':
 
 {year}年，你最喜欢去 **{midnight_snack_most_visited_canteen}** 吃宵夜， **{midnight_snack_most_visited_canteen_count}** 在这里吃了宵夜，共花费了 **{midnight_snack_most_visited_canteen_spent}** 元；\n
 **{midnight_snack_most_visited_window}** 是你宵夜的最爱， **{midnight_snack_most_visited_window_count}** 在这里点了宵夜，共花费了 **{midnight_snack_most_visited_window_spent}** 元。\n
+
+"""
+    else:
+        sub_title_5_content = f"""
+{year}年，你在华清大学共吃了 **{midnight_snack_count_int}** 顿宵夜，共花费 **{midnight_snack_spent}** 元。\n
+从来不吃宵夜？你是如何忍住深夜美食诱惑的！\n
 
 """
     # 吃饭总览

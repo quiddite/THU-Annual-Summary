@@ -143,6 +143,8 @@ if __name__ == '__main__':
     # 早餐：筛选出hour在4——9点的数据，排除meraddr为紫荆公寓6号楼、自助打印成绩单、学生卡成本、陈明游泳馆、西湖游泳池的数据
     df_breakfast = df[(df['hour']==4)|(df['hour']==5)|(df['hour']==6)|(df['hour']==7)|(df['hour']==8)|(df['hour']==9)|(df['hour']=='4')|(df['hour']=='5')|(df['hour']=='6')|(df['hour']=='7')|(df['hour']=='8')|(df['hour']=='9')|(df['hour']=='04')|(df['hour']=='05')|(df['hour']=='06')|(df['hour']=='07')|(df['hour']=='08')|(df['hour']=='09')]
     
+    df_breakfast = df_breakfast[(df_breakfast['meraddr']!=apt)&(df_breakfast['mername']!='自助打印成绩单')&(df_breakfast['mername']!='学生卡成本')&(df_breakfast['meraddr']!='陈明游泳馆')&(df_breakfast['meraddr']!='西湖游泳池')]
+
     # 判断是否有早餐数据
     if df_breakfast.shape[0] == 0:
         record.append({'事项':'吃早餐最早时间','金额':0,'时间':'无','地点':'无'})
@@ -150,10 +152,8 @@ if __name__ == '__main__':
         record.append({'事项':'吃早餐总次数','金额':0,'时间':'无','地点':'无'})
         record.append({'事项':'吃早餐最常去的食堂','金额':0,'时间':'无','地点':'无'})
         record.append({'事项':'吃早餐最常去的窗口','金额':0,'时间':'无','地点':'无'})
-    else:
-        df_breakfast = df_breakfast[(df_breakfast['meraddr']!=apt)&(df_breakfast['mername']!='自助打印成绩单')&(df_breakfast['mername']!='学生卡成本')&(df_breakfast['meraddr']!='陈明游泳馆')&(df_breakfast['meraddr']!='西湖游泳池')]
-
-        # 记录吃早餐最早时间，找到最接近6的一条数据，按照minute、second依次检索得最小的一条数据
+    else:        
+        # 记录吃早餐最早时间，按照minute、second依次检索得最小的一条数据
         df_breakfast_early = df_breakfast.sort_values(by=['hour','minute','second'])
         
         df_breakfast_earliest = df_breakfast_early.iloc[0]
@@ -189,6 +189,8 @@ if __name__ == '__main__':
     # 午饭：筛选出hour在10——13点的数据，排除meraddr为紫荆公寓6号楼、自助打印成绩单、陈明游泳馆、西湖游泳池的数据
     df_lunch = df[(df['hour']==10)|(df['hour']==11)|(df['hour']==12)|(df['hour']==13)|(df['hour']=='10')|(df['hour']=='11')|(df['hour']=='12')|(df['hour']=='13')]
     
+    df_lunch = df_lunch[(df_lunch['meraddr']!=apt)&(df_lunch['mername']!='自助打印成绩单')&(df_lunch['mername']!='学生卡成本')&(df_lunch['meraddr']!='陈明游泳馆')&(df_lunch['meraddr']!='西湖游泳池')]
+
     # 判断是否有午餐数据
     if df_lunch.shape[0] == 0:
         record.append({'事项':'吃午饭最早时间','金额':0,'时间':'无','地点':'无'})
@@ -198,8 +200,6 @@ if __name__ == '__main__':
         record.append({'事项':'吃午饭最常去的窗口','金额':0,'时间':'无','地点':'无'})
     
     else:
-        df_lunch = df_lunch[(df_lunch['meraddr']!=apt)&(df_lunch['mername']!='自助打印成绩单')&(df_lunch['mername']!='学生卡成本')&(df_lunch['meraddr']!='陈明游泳馆')&(df_lunch['meraddr']!='西湖游泳池')]
-
         # 记录吃午饭最早的时间，按照minute、second依次检索得最小的一条数据
         df_lunch_early = df_lunch.sort_values(by=['hour','minute','second'])
         df_lunch_earliest = df_lunch_early.iloc[0]
@@ -235,6 +235,8 @@ if __name__ == '__main__':
     # 晚饭：筛选出hour在16——19点的数据，排除meraddr为紫荆公寓6号楼、自助打印成绩单、学生卡成本、陈明游泳馆、西湖游泳池的数据
     df_dinner = df[(df['hour']==16)|(df['hour']==17)|(df['hour']==18)|(df['hour']==19)|(df['hour']=='16')|(df['hour']=='17')|(df['hour']=='18')|(df['hour']=='19')]
     
+    df_dinner = df_dinner[(df_dinner['meraddr']!=apt)&(df_dinner['mername']!='自助打印成绩单')&(df_dinner['mername']!='学生卡成本')&(df_dinner['meraddr']!='陈明游泳馆')&(df_dinner['meraddr']!='西湖游泳池')]
+
     # 判断是否有晚餐数据
     if df_dinner.shape[0] == 0:
         record.append({'事项':'吃晚饭最早时间','金额':0,'时间':'无','地点':'无'})
@@ -243,9 +245,7 @@ if __name__ == '__main__':
         record.append({'事项':'吃晚饭最常去的食堂','金额':0,'时间':'无','地点':'无'})
         record.append({'事项':'吃晚饭最常去的窗口','金额':0,'时间':'无','地点':'无'})
     
-    else:
-        df_dinner = df_dinner[(df_dinner['meraddr']!=apt)&(df_dinner['mername']!='自助打印成绩单')&(df_dinner['mername']!='学生卡成本')&(df_dinner['meraddr']!='陈明游泳馆')&(df_dinner['meraddr']!='西湖游泳池')]
-
+    else:        
         # 记录吃晚饭最早时间，找到最接近17的一条数据，按照minute、second依次检索得最小的一条数据
         df_dinner_early = df_dinner.sort_values(by=['hour','minute','second'])
         df_dinner_earliest = df_dinner_early.iloc[0]
@@ -281,6 +281,8 @@ if __name__ == '__main__':
     # 吃宵夜：筛选出hour在20——23点的数据，排除meraddr为紫荆公寓6号楼、自助打印成绩单、陈明游泳馆、西湖游泳池的数据
     df_midnight = df[(df['hour']==20)|(df['hour']==21)|(df['hour']==22)|(df['hour']==23)|(df['hour']=='20')|(df['hour']=='21')|(df['hour']=='22')|(df['hour']=='23')]
     
+    df_midnight = df_midnight[(df_midnight['meraddr']!=apt)&(df_midnight['mername']!='自助打印成绩单')&(df_midnight['mername']!='学生卡成本')&(df_midnight['meraddr']!='陈明游泳馆')&(df_midnight['meraddr']!='西湖游泳池')]
+
     # 判断是否有宵夜数据
     if df_midnight.shape[0] == 0:
         record.append({'事项':'吃宵夜最早时间','金额':0,'时间':'无','地点':'无'})
@@ -289,8 +291,6 @@ if __name__ == '__main__':
         record.append({'事项':'吃宵夜最常去的食堂','金额':0,'时间':'无','地点':'无'})
         record.append({'事项':'吃宵夜最常去的窗口','金额':0,'时间':'无','地点':'无'})
     else:
-        df_midnight = df_midnight[(df_midnight['meraddr']!=apt)&(df_midnight['mername']!='自助打印成绩单')&(df_midnight['mername']!='学生卡成本')&(df_midnight['meraddr']!='陈明游泳馆')&(df_midnight['meraddr']!='西湖游泳池')]
-
         # 记录吃宵夜最早时间，找到最接近20的一条数据
         df_midnight_early = df_midnight.sort_values(by=['hour','minute','second'])
         df_midnight_earliest = df_midnight_early.iloc[0]
@@ -333,7 +333,6 @@ if __name__ == '__main__':
         record.append({'事项':'洗澡总次数','金额':0,'时间':'无','地点':'无'})
         record.append({'事项':'最常洗澡时间','金额':0,'时间':'无','地点':'无'})
     else:
-
         # 记录洗澡最晚时间，找到hour为0或者23及以前，按照minute、second依次检索得最大的一条数据
         df_bath_late = df_bath[(df_bath['hour']==0)|(df_bath['hour']=='00')|(df_bath['hour']=='0')|(df_bath['hour']==1)|(df_bath['hour']=='01')|(df_bath['hour']=='1')]
         if df_bath_late.shape[0] == 0:
@@ -352,7 +351,9 @@ if __name__ == '__main__':
         else:
             max_bath_end = 0
 
-        record.append({'事项':'最常洗澡时间','金额':df_bath_hour.max(),'时间':f'{year}年{max_bath}点到{max_bath_end}点','地点':df_bath_latest['mername']})
+        max_bath_monney = df_bath[df_bath['hour']==max_bath]['txamt'].sum()
+
+        record.append({'事项':'最常洗澡时间','金额':max_bath_monney,'时间':f'{year}年{max_bath}点到{max_bath_end}点','地点':df_bath_latest['mername']})
 
         # 记录洗澡的总次数
         bath_monney = df_bath['txamt'].sum()
@@ -367,8 +368,7 @@ if __name__ == '__main__':
         record.append({'事项':'饮水最晚时间','金额':0,'时间':'无','地点':'无'})
         record.append({'事项':'饮水总次数','金额':0,'时间':'无','地点':'无'})
         record.append({'事项':'最常饮水时间','金额':0,'时间':'无','地点':'无'})
-    else:
-        
+    else:        
         # 记录饮水最早时间，按照minute、second依次检索得最小的一条数据
         df_water_early = df_water.sort_values(by=['hour','minute','second'])
         df_water_earliest = df_water_early.iloc[0]
@@ -379,14 +379,18 @@ if __name__ == '__main__':
         df_water_latest = df_water_late.iloc[0]
         record.append({'事项':'饮水最晚时间','金额':df_water_latest['txamt'],'时间':f'{year}年{df_water_latest["month"]}月{df_water_latest["day"]}日{df_water_latest["hour"]}时{df_water_latest["minute"]}分{df_water_latest["second"]}秒','地点':df_water_latest['mername']})
 
+        # 记录饮水地点
+        water_location = df_water['mername'].drop_duplicates()
+        water_location = water_location.tolist()
+        
         # 记录饮水的总次数
         water_monney = df_water['txamt'].sum()
-        record.append({'事项':'饮水总次数','金额':water_monney,'时间':f'{year}年{df_water.shape[0]}次','地点':'无'})
+        record.append({'事项':'饮水总次数','金额':water_monney,'时间':f'{year}年{df_water.shape[0]}次','地点':{water_location}})
 
         # 记录最常饮水的时间，找到出现次数最多的hour
         df_water_hour = df_water['hour'].value_counts()
         max_water = df_water_hour.idxmax()
-        record.append({'事项':'最常饮水时间','金额':df_water_hour.max(),'时间':f'{year}年{max_water}点','地点':'无'})
+        record.append({'事项':'最常饮水时间','金额':df_water_hour.max(),'时间':f'{year}年{max_water}点','地点':{water_location}})
     
 
     # 游泳：筛选出meraddr为陈明游泳馆和西湖游泳池的数据
@@ -399,7 +403,6 @@ if __name__ == '__main__':
         record.append({'事项':'游泳总次数','金额':0,'时间':'无','地点':'无'})
         record.append({'事项':'最常游泳时间','金额':0,'时间':'无','地点':'无'})
     else:
-
         # 记录游泳最早时间，按照minute、second依次检索得最小的一条数据
         df_swim_early = df_swim.sort_values(by=['hour','minute','second'])
         df_swim_earliest = df_swim_early.iloc[0]
@@ -410,9 +413,13 @@ if __name__ == '__main__':
         df_swim_latest = df_swim_late.iloc[0]
         record.append({'事项':'游泳最晚时间','金额':df_swim_latest['txamt'],'时间':f'{year}年{df_swim_latest["month"]}月{df_swim_latest["day"]}日{df_swim_latest["hour"]}时{df_swim_latest["minute"]}分{df_swim_latest["second"]}秒','地点':df_swim_latest['meraddr']})
 
+        # 记录游泳地点
+        swim_location = df_swim['meraddr'].drop_duplicates()
+        swim_location = swim_location.tolist()
+
         # 记录游泳的总次数
         swim_monney = df_swim['txamt'].sum()
-        record.append({'事项':'游泳总次数','金额':swim_monney,'时间':f'{year}年{df_swim.shape[0]}次','地点':'无'})
+        record.append({'事项':'游泳总次数','金额':swim_monney,'时间':f'{year}年{df_swim.shape[0]}次','地点':{swim_location}})
 
         # 记录最常游泳的时间，找到出现次数最多的hour
         df_swim_hour = df_swim['hour'].value_counts()
